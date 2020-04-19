@@ -1,5 +1,5 @@
 """
-ASGI config for tomoMap project.
+ASGI config for mapApp project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
