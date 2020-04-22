@@ -6,6 +6,13 @@
 </head>
 <body>
 <h1>Login</h1>
-
+    <form>
+        {% csrf_token %}
+        <label for="Email">Email:</label><br>
+        <input type="Text" id="Email" Name="Email"><br>
+        <label for="Password">Password:</label><br>
+        <input type="password" id="Password" Name="Password"><br>
+        <input type="Submit" value="Login">
+    </form>
 </body>
 </html>

@@ -13,7 +13,7 @@
 {% load static %}
 <img src="{% static 'images/logo.jpg' %}">
 <br>
-<a href="temp" title="login">login</a>
-
+<a href="{% url 'login' %}" title="login">login</a><br>
+<a href="{% url 'register' %}" title="register">register</a>
 </body>
 </html>

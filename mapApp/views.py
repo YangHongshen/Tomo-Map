@@ -11,7 +11,15 @@ def index(request):
 
 
 def login(request):
-    return HttpResponse("login")
+    '''
+    username = request.post['username']
+    password = request.post['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return render(request, "mapApp/login.html")
+    '''
+    return render(request, "mapApp/login.html")
 
 
 def register(request):
