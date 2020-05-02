@@ -1,10 +1,83 @@
-ul {
-    list-style-type: circle;
+
+* {
     margin: 0;
-    padding: 0;
-    background-color: #87CEEB;
+    font-family: 'Indie Flower', cursive;
 }
-li
-{
-    display:inline;
+
+body {
+    width: 100%;
+}
+
+section {}
+
+header {
+    width: 100%;
+    background-color: yellowgreen;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#slogan {
+    font-size: x-large;
+    display: block;
+    margin: 0 20px;
+}
+
+.header__item {
+    margin: 20px;
+}
+
+#header__item-first {
+    font-size: 70px;
+    min-width: 350px;
+}
+
+#left__img {
+    width: 100%;
+}
+
+.wrapper {
+    margin: 0 20px;
+}
+
+
+@media (min-width:1000px) {
+    .wrapper {
+        column-count: 2;
+        margin: 0 20px;
+    }
+    .right {
+        font-size: 0.8em;
+        overflow: auto ;
+    }
+}
+
+form label {
+    font-size: 30px;
+}
+
+form input {
+    height: 30px;
+    width: 200px;
+}
+
+form button {
+    height: 40px;
+    width: 80px;
+    font-size: 20px;
+}
+
+form a {
+    font-size: 20px;
+    
+}
+
+.form__wrapper {
+    border: 1px solid black;
+    display: block;
+    padding: 20px;
+    margin: 40px auto;
+    text-align: center;
+    width: 300px;
 }
