@@ -34,9 +34,5 @@ def register(request):
     return render(request, "mapApp/register.html", {'form': form})
 
 
-def reset_password(request):
-    return HttpResponse("register")
-
-
-def logout(request):
-    return HttpResponse("logout")
+def reset(request):
+    return render(request, "mapApp/reset.html")

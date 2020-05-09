@@ -1,18 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Login</h1>
+{% extends "mapApp/base_layout.html" %}
+{% load static %}
+{% block content %}
+<div class="container py-5">
+    <div class="text-center">
+        <img src="{% static 'images/Favicon/logo_size_invert.jpg' %}" class="m-5">
+    </div>
     <form>
-        {% csrf_token %}
-        <label for="Email">Email:</label><br>
-        <input type="Text" id="Email" Name="Email"><br>
-        <label for="Password">Password:</label><br>
-        <input type="password" id="Password" Name="Password"><br>
-        <input type="Submit" value="Login">
+        <div class="form-group text-center col-md-8 p-0 mx-auto">
+            <label for="loginInputEmail" class="font-weight-bold">Email address</label>
+            <input type="email" class="form-control" id="loginInputEmail">
+        </div>
+        <div class="form-group text-center col-md-8 p-0 mx-auto">
+            <label for="loginInputPassword" class="font-weight-bold">Password</label>
+            <input type="password" class="form-control" id="loginInputPassword">
+        </div>
+        <div class="text-center">
+            <a class="font-weight-bold col-md-8 mx-auto" href="#">Forget Password? Click Here to Reset Password</a>
+        </div>
+        <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Login</button>
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

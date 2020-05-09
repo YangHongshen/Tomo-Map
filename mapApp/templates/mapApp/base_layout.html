@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,16 +10,16 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/master.css" />
-    <link rel="shortcut icon" href="../images/LogoSize_Favicon_ByTailorBrands/logo_size_invert.jpg" />
+    <link rel="stylesheet" href="{% static 'css/master.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/Favicon/logo_size_invert.jpg' %}" />
 
-    <title>Login - Tomo Map</title>
+    <title>{% block title %}Tomo Map{% endblock %}</title>
 </head>
 
-<body style="background-color:cadetblue">
+<body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark font-weight-bold">
-        <a class="navbar-brand" href="../images/LogoSize_Apple_icon_ByTailorBrands/logo_size_invert.jpg">
-            <img src="../images/LogoSize_Apple_icon_ByTailorBrands/logo_size_invert.jpg" style="width:70px;height:70px;">
+        <a class="navbar-brand">
+            <img src="{% static 'images/Favicon/logo_size.jpg' %}" style="width:70px;height:70px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
             <span class="navbar-toggler-icon"></span>
@@ -26,11 +27,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{% url 'login' %}">Link</a>
                 </li>
             </ul>
             <span class="nav-item dropdown">
@@ -38,7 +39,7 @@
                     <i class="fas fa-user fa-lg"></i>
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#"><b>User Info</b></a>
+                    <a class="dropdown-item" href="#"><b>{% block Userinfo %}User Info{% endblock %}</b></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><b>Login</b></a>
                     <a class="dropdown-item" href="#"><b>Register</b></a>
@@ -50,24 +51,10 @@
             </form>
         </div>
     </nav>
-    <div class="container">
-        <div class="text-center">
-            <img src="../images/LogoSize_Favicon_ByTailorBrands/logo_size_invert.jpg" class="m-5">
-        </div>
-        <form>
-            <div class="form-group text-center col-md-8 p-0 mx-auto">
-                <label for="loginInputEmail" class="font-weight-bold">Email address</label>
-                <input type="email" class="form-control" id="loginInputEmail">
-            </div>
-            <div class="form-group text-center col-md-8 p-0 mx-auto">
-                <label for="loginInputPassword" class="font-weight-bold">Password</label>
-                <input type="password" class="form-control" id="loginInputPassword">
-            </div>
-            <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Login</button>
-            <button type="button" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Reset Password</button>
-            <button type="button" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Register a new account</button>
-        </form>
-    </div>
+
+    {% block content %}
+    <p class="py-5">This is a sample content</p>
+    {% endblock %}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
