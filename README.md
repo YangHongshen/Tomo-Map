@@ -22,4 +22,4 @@ The target is to build an app with functions of
 - Agile: [Jira](https://tomomap.atlassian.net/jira/software/projects/TM/boards/1)
 ## Communication
 - IM: [Slack](tomomap.slack.com)
-- Email: [Tomomap.cc](mailto:admin@tomomap.cc)
+- Email: admin@tomomap.cc
