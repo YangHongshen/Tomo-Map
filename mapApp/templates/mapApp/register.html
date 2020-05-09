@@ -6,13 +6,18 @@
         <img src="{% static 'images/Favicon/logo_size_invert.jpg' %}" class="m-5">
     </div>
     <form>
-        <div class="form-group text-center col-md-8 p-0 mx-auto">
-            <label for="loginInputEmail" class="font-weight-bold">Email address</label>
-            <input type="email" class="form-control" id="loginInputEmail">
-        </div>
-        <div class="form-group text-center col-md-8 p-0 mx-auto">
-            <label for="loginInputPassword" class="font-weight-bold">Password</label>
-            <input type="password" class="form-control" id="loginInputPassword">
+        <div class="form-group text-center">
+            <label for="loginInputEmail" class="font-weight-bold col-md-8 p-0 mx-auto">Email address
+                <input type="email" class="form-control" id="loginInputEmail" placeholder="example@email.com">
+            </label>
+            <label for="loginInputPassword" class="font-weight-bold col-md-8 p-0 mx-auto">Password
+                <input type="password" class="form-control" id="loginInputPassword"
+                       placeholder="Type your password">
+            </label>
+            <label for="confirmPassword" class="font-weight-bold col-md-8 p-0 mx-auto">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+            </label>
+
         </div>
         <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Register</button>
         <div class="text-center">
@@ -21,3 +26,5 @@
     </form>
 </div>
 {% endblock %}
+
+{% block title %}Register - Tomo Map{% endblock %}

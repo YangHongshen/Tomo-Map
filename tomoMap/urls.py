@@ -18,7 +18,10 @@ from django.urls import path, include
 from mapApp import views
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name="index"),
     path('admin/', admin.site.urls),
-    path('tomoMap/', include('mapApp.urls'))
+    path('login/', views.login, name='login'),
+    path('register/', views.register, name='register'),
+    path('reset/', views.reset, name='reset'),
+    path('map/', views.map, name='map'),
 ]
