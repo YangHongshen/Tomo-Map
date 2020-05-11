@@ -19,7 +19,7 @@ The target is to build an app with functions of
 - Mapping: [Bing Map](https://www.microsoft.com/en-us/maps/choose-your-bing-maps-api)
 - APIs: [Django Rest Framework](https://www.django-rest-framework.org/)
 ## Project Management
-- Version Control: [git](https://git-scm.com/)
+- Version Control: [git](https://git-scm.com/) (May move to Gitee in near future)
 - Agile: [Jira](https://tomomap.atlassian.net/jira/software/projects/TM/boards/1)
 ## Communication
 - IM: [Slack](tomomap.slack.com)
