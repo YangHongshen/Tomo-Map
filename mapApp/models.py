@@ -5,18 +5,9 @@ from django.core.exceptions import ValidationError
 
 # Create your models here.
 
-class User(models.Model):
-    username = models.CharField(max_length=30)
+class UserModel(models.Model):
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=256)
-
-    def validate_email(self):
-        email_validator = EmailValidator()
-        try:
-            email_validator(self.email)
-        except ValidationError:
-            return False
-        return True
+    password = models.CharField(max_length=64)
 
     def __str__(self):
-        return self.username
+        return self.email

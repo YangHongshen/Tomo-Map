@@ -9,17 +9,18 @@ The target is to build an app with functions of
 4. Update your position on Map
 5. Meet local friend if position overlapping on map
 
-## Tech Stacks
+## Tech Stacks (Proactively Updating)
 - Prototyping: [InVision](https://www.invisionapp.com/)
-- Front-end: [Bootstrap](https://getbootstrap.com/), [Vue.js](https://vuejs.org/)
+- Front-end: [Bootstrap](https://getbootstrap.com/)
 - Back-end: [Django](https://www.djangoproject.com/)
 - Reverse proxy: [Nginx](https://www.nginx.com/)
 - Database: [Sqlite](https://www.sqlite.org/index.html)
 - Server: [Ubuntu](https://ubuntu.com/)
 - Mapping: [Bing Map](https://www.microsoft.com/en-us/maps/choose-your-bing-maps-api)
+- APIs: [Django Rest Framework](https://www.django-rest-framework.org/)
 ## Project Management
 - Version Control: [git](https://git-scm.com/)
 - Agile: [Jira](https://tomomap.atlassian.net/jira/software/projects/TM/boards/1)
 ## Communication
 - IM: [Slack](tomomap.slack.com)
-- Email: admin@tomomap.cc
+- Email: [admin@tomomap.cc](mailto:admin@tomomap.cc)

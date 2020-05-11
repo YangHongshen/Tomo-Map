@@ -18,10 +18,10 @@ from django.urls import path, include
 from mapApp import views
 
 urlpatterns = [
-    path('', views.index, name="index"),
+    path('', views.index_page, name="index_page"),
     path('admin/', admin.site.urls),
-    path('login/', views.login, name='login'),
-    path('register/', views.register, name='register'),
-    path('reset/', views.reset, name='reset'),
-    path('map/', views.map, name='map'),
+    path('login/', views.login_page, name='login_page'),
+    path('register/', views.register_page, name='register_page'),
+    path('reset/', views.reset_page, name='reset_page'),
+    path('map/', views.map_page, name='map_page')
 ]

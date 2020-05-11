@@ -5,13 +5,15 @@
     <div class="text-center">
         <img src="{% static 'images/Favicon/logo_size_invert.jpg' %}" class="m-5">
     </div>
-    <form>
+    <form action="/" method="post">
+        {% csrf_token %}
         <div class="form-group text-center">
             <label for="loginInputEmail" class="font-weight-bold col-md-8 p-0 mx-auto">Email address
-                <input type="email" class="form-control" id="loginInputEmail" placeholder="example@email.com">
+                <input type="email" class="form-control" id="loginInputEmail" placeholder="example@email.com" required>
             </label>
             <label for="loginInputPassword" class="font-weight-bold col-md-8 p-0 mx-auto">Password
-                <input type="password" class="form-control" id="loginInputPassword" placeholder="Type your password">
+                <input type="password" class="form-control" id="loginInputPassword" placeholder="Type your password"
+                       required>
             </label>
         </div>
         <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Login</button>
