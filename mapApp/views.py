@@ -16,22 +16,24 @@ def login_page(request):
 
 def register_page(request):
     if request.method == 'POST':
-        register_email = request.POST.get("register_email", None)
-        print(register_email)
-        register_password1 = request.POST.get("register_password1", None)
-        print(register_password1)
-        register_password2 = request.POST.get("register_password2", None)
-        print(register_password2)
-        if register_password1 != register_password2:
-            return HttpResponse("Sorry, two password does not match")
+        form = forms.RegisterForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data["email"]
+            password1 = form.cleaned_data["password1"]
+            password2 = form.cleaned_data["password2"]
+            if password1 != password2:
+                return HttpResponse("Sorry, two password does not match")
+            else:
+                models.UserModel.objects.create(
+                    email=email,
+                    password=password1
+                )
+                return HttpResponse("Congrats, your have registered successfully")
         else:
-            models.UserModel.objects.create(
-                email=register_email,
-                password=register_password1
-            )
-        return HttpResponse("Congrats, your have registered successfully")
+            return HttpResponse("Sorry, form is invalid")
     else:
-        return render(request, "mapApp/register.html")
+        form = forms.RegisterForm()
+        return render(request, "mapApp/register.html", {'form': form})
 
 
 def reset_page(request):
