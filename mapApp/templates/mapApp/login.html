@@ -8,20 +8,15 @@
     <form method="post">
         {% csrf_token %}
         <div class="form-group text-center col-md-8 mx-auto p-0">
-                <label class="font-weight-bold ">Email address</label>
-                {{form.email}}
-                <ul class="list-group">
-                {% for email_message in email_messages %}
-                    <li class="list-group-item list-group-item-action list-group-item-warning">{{email_message}}</li>
+            <ul class="list-group">
+                {% for message in messages %}
+                <li class="list-group-item list-group-item-action list-group-item-warning">{{message}}</li>
                 {% endfor %}
-                </ul>
-                <label class="font-weight-bold">Password</label>
-                {{form.password}}
-                <ul class="list-group">
-                {% for password_message in password_messages %}
-                    <li class="list-group-item list-group-item-action list-group-item-warning">{{password_message}}</li>
-                {% endfor %}
-                </ul>
+            </ul>
+            <label class="font-weight-bold ">Email address</label>
+            {{form.email}}
+            <label class="font-weight-bold">Password</label>
+            {{form.password}}
         </div>
         <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Login</button>
         <div class="text-center">
