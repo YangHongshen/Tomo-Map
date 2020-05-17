@@ -53,17 +53,13 @@ class RegisterView(View):
         if form.is_valid():
             email = form.cleaned_data["email"]
             # TODO: Add complexity check
-            password1 = form.cleaned_data["password1"]
-            password2 = form.cleaned_data["password2"]
-            if password1 != password2:
-                messages.append("Sorry, two password does not match")
-            else:
-                models.UserModel.objects.create(
-                    email=email,
-                    password=password1
-                )
-                messages.append("Congrats, your have registered successfully")
-                # TODO: Hop to Login page with auth
+            password = form.cleaned_data["password1"]
+            models.UserModel.objects.create(
+                email=email,
+                password=password
+            )
+            messages.append("Congrats, your have registered successfully")
+            # TODO: Hop to Login page with auth
         else:
             messages.append(first_value(form.errors))
         return render(request, "mapApp/register.html", {'form': form, 'messages': messages})

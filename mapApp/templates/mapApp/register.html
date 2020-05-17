@@ -1,19 +1,23 @@
 {% extends "mapApp/base_layout.html" %}
 {% load static %}
 {% block content %}
+
 <div class="container">
     <div class="text-center">
         <img src="{% static 'images/Favicon/logo_size_invert.jpg' %}" class="m-5">
     </div>
-    <form method="post">
+    <form method="post" id="register__form">
         {% csrf_token %}
         <div class="form-group text-center col-md-8 mx-auto p-0">
             <ul class="list-group">
                 {% for message in messages %}
                 <li class="list-group-item list-group-item-action list-group-item-warning">{{message}}</li>
                 {% endfor %}
+                <li class="list-group-item list-group-item-action list-group-item-warning d-none form__warning">
+                    Sorry, two password does not match
+                </li>
             </ul>
-            <label class="font-weight-bold ">Email address</label>
+            <label class="font-weight-bold ">Email Address</label>
             {{form.email}}
             <label class="font-weight-bold">Password</label>
             {{form.password1}}
@@ -22,6 +26,9 @@
         </div>
         <button type="submit" value="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
             Register
+        </button>
+        <button type="button" onclick="confirmPassword('register__form')" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
+            Register_js
         </button>
     </form>
 </div>
