@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
+from django.views import View
 from django.contrib.auth import login, authenticate
 from mapApp import models, forms
 
@@ -16,9 +17,13 @@ def index_page(request):
     return render(request, "mapApp/index.html")
 
 
-def login_page(request):
-    messages = []
-    if request.method == 'POST':
+class LoginView(View):
+    def get(self, request):
+        form = forms.LoginForm()
+        return render(request, "mapApp/login.html", {'form': form})
+
+    def post(self, request):
+        messages = []
         form = forms.LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"].strip()
@@ -33,15 +38,17 @@ def login_page(request):
             except ObjectDoesNotExist:
                 messages.append("User not found")
         else:
-            messages.append(first_value(form.errors.values()))
-    else:
-        form = forms.LoginForm()
-    return render(request, "mapApp/login.html", {'messages': messages, 'form': form})
+            messages.append(first_value(form.errors))
+        return render(request, "mapApp/login.html", {'form': form, 'messages': messages})
 
 
-def register_page(request):
-    messages = []
-    if request.method == 'POST':
+class RegisterView(View):
+    def get(self, request):
+        form = forms.RegisterForm()
+        return render(request, "mapApp/register.html", {'form': form})
+
+    def post(self, request):
+        messages = []
         form = forms.RegisterForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data["email"]
@@ -59,9 +66,7 @@ def register_page(request):
                 # TODO: Hop to Login page with auth
         else:
             messages.append(first_value(form.errors))
-    else:
-        form = forms.RegisterForm()
-    return render(request, "mapApp/register.html", {'form': form, 'messages': messages})
+        return render(request, "mapApp/register.html", {'form': form, 'messages': messages})
 
 
 def reset_page(request):

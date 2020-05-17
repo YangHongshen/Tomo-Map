@@ -20,8 +20,8 @@ from mapApp import views
 urlpatterns = [
     path('', views.index_page, name="index_page"),
     path('admin/', admin.site.urls),
-    path('login/', views.login_page, name='login_page'),
-    path('register/', views.register_page, name='register_page'),
+    path('login/', views.LoginView.as_view(), name='login_page'),
+    path('register/', views.RegisterView.as_view(), name='register_page'),
     path('reset/', views.reset_page, name='reset_page'),
     path('map/', views.map_page, name='map_page')
 ]
