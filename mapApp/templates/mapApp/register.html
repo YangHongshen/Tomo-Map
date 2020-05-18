@@ -6,7 +6,7 @@
     <div class="text-center">
         <img src="{% static 'images/Favicon/logo_size_invert.jpg' %}" class="m-5">
     </div>
-    <form method="post" id="register__form">
+    <form method="post" id="register-form">
         {% csrf_token %}
         <div class="form-group text-center col-md-8 mx-auto p-0">
             <ul class="list-group">
@@ -24,11 +24,11 @@
             <label class="font-weight-bold"></label>
             {{form.password2}}
         </div>
-        <button type="submit" value="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
-            Register
+        <button type="submit" value="submit" id="register-form__button" class="btn btn-dark btn-block font-weight-bold col-md-8 d-none mx-auto">
+            Register_Hidden
         </button>
-        <button type="button" onclick="confirmPassword('register__form')" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
-            Register_js
+        <button type="button" onclick="confirmPassword('register-form__button')" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
+            Register
         </button>
     </form>
 </div>
