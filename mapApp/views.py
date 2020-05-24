@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import View
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from .forms import UserForm
 from mapApp import models, forms
 
 
@@ -44,25 +46,15 @@ class LoginView(View):
 
 class RegisterView(View):
     def get(self, request):
-        form = forms.RegisterForm()
+        form = UserForm()
         return render(request, "mapApp/register.html", {'form': form})
 
     def post(self, request):
-        messages = []
-        form = forms.RegisterForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"]
-            # TODO: Add complexity check
-            password = form.cleaned_data["password1"]
-            models.UserModel.objects.create(
-                email=email,
-                password=password
-            )
-            messages.append("Congrats, your have registered successfully")
-            # TODO: Hop to Login page with auth
-        else:
-            messages.append(first_value(form.errors))
-        return render(request, "mapApp/register.html", {'form': form, 'messages': messages})
+            form.save()
+        context = {'form': form}
+        return render(request, "mapApp/register.html", context)
 
 
 def reset_page(request):

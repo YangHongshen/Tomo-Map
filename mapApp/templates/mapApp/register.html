@@ -8,26 +8,21 @@
     </div>
     <form method="post" id="register-form">
         {% csrf_token %}
-        <div class="form-group text-center col-md-8 mx-auto p-0">
-            <ul class="list-group">
-                {% for message in messages %}
-                <li class="list-group-item list-group-item-action list-group-item-warning">{{message}}</li>
-                {% endfor %}
-                <li class="list-group-item list-group-item-action list-group-item-warning d-none form__warning">
-                    Sorry, two password does not match
-                </li>
-            </ul>
-            <label class="font-weight-bold ">Email Address</label>
-            {{form.email}}
-            <label class="font-weight-bold">Password</label>
-            {{form.password1}}
-            <label class="font-weight-bold"></label>
-            {{form.password2}}
+        {% for field in form %}
+        <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold">
+            {{ field.label_tag }}
         </div>
-        <button type="submit" value="submit" id="register-form__button" class="btn btn-dark btn-block font-weight-bold col-md-8 d-none mx-auto">
-            Register_Hidden
-        </button>
-        <button type="button" onclick="confirmPassword('register-form__button')" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
+        <div class="form-group text-center col-md-8 mx-auto my-0 p-0">
+            {{ field }}
+        </div>
+        {% if field.errors%}
+        <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold alert alert-warning">
+            {{ field.errors|first }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        <button type="submit" value="submit" id="register-form__button"
+                class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
             Register
         </button>
     </form>
