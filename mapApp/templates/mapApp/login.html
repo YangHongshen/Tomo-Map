@@ -7,21 +7,23 @@
     </div>
     <form method="post">
         {% csrf_token %}
+        {% for message in messages %}
+        <div class="text-center alert alert-success col-md-8 p-0 my-0 mx-auto" role="alert">
+            <p id="messages" class="font-weight-bold col-md-8 p-0 my-0 mx-auto">
+                {{ message }}
+            </p>
+        </div>
+        {% endfor %}
         <div class="form-group text-center col-md-8 mx-auto p-0">
-            <ul class="list-group">
-                {% for message in messages %}
-                <li class="list-group-item list-group-item-action list-group-item-warning">{{message}}</li>
-                {% endfor %}
-            </ul>
-            <label class="font-weight-bold ">Email Address</label>
-            {{form.email}}
+            <label class="font-weight-bold ">Username</label>
+            {{form.username}}
             <label class="font-weight-bold">Password</label>
             {{form.password}}
         </div>
-        <script src="https://www.google.com/recaptcha/api.js?render=_reCAPTCHA_site_key"></script>
-        <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">Login</button>
+        <button type="submit" class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto my-3">Login</button>
         <div class="text-center">
-            <a class="font-weight-bold col-md-8 mx-auto" href="{% url 'reset_page' %}">Forget Password? Click Here to Reset Password</a>
+            <a class="font-weight-bold col-md-8 mx-auto" href="{% url 'reset_page' %}">Forget Password? Click Here to
+                Reset Password</a>
         </div>
     </form>
 </div>

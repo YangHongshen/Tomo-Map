@@ -8,23 +8,27 @@
     </div>
     <form method="post" id="register-form">
         {% csrf_token %}
-        {% for field in form %}
+        {% for field in form.visible_fields %}
         <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold">
             {{ field.label_tag }}
         </div>
         <div class="form-group text-center col-md-8 mx-auto my-0 p-0">
             {{ field }}
         </div>
-        {% if field.errors%}
+        {% if field.errors %}
         <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold alert alert-warning">
             {{ field.errors|first }}
         </div>
         {% endif %}
         {% endfor %}
         <button type="submit" value="submit" id="register-form__button"
-                class="btn btn-dark btn-block font-weight-bold col-md-8 mx-auto">
+                class="btn btn-dark btn-block font-weight-bold col-md-8 my-3 mx-auto">
             Register
         </button>
+        <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold">
+            <a href="{% url 'login_page' %}">Already have an account? Login</a>
+        </div>
+
     </form>
 </div>
 {% endblock %}

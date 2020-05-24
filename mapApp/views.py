@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.views import View
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate, logout
 from .forms import UserForm
 from mapApp import models, forms
+from django.shortcuts import redirect
+from django.contrib import messages
 
 
 def first_value(dictionary):
@@ -25,23 +26,17 @@ class LoginView(View):
         return render(request, "mapApp/login.html", {'form': form})
 
     def post(self, request):
-        messages = []
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data["email"].strip()
-            password = form.cleaned_data["password"]
-            try:
-                user = models.UserModel.objects.get(email=email)
-                if user.password == password:
-                    messages.append("Congrats, you have logged in successfully")
-                    # TODO: auth system
-                else:
-                    messages.append("Sorry, passsword is invalid")
-            except ObjectDoesNotExist:
-                messages.append("User not found")
+        form = forms.LoginForm()
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('index_page')
         else:
-            messages.append(first_value(form.errors))
-        return render(request, "mapApp/login.html", {'form': form, 'messages': messages})
+            messages.error(request, "Username and Password does not correct")
+            return render(request, "mapApp/login.html", {'form': form})
 
 
 class RegisterView(View):
@@ -53,8 +48,9 @@ class RegisterView(View):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-        context = {'form': form}
-        return render(request, "mapApp/register.html", context)
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account ' + user + ' has created successfully!')
+            return redirect("login_page")
 
 
 def reset_page(request):
