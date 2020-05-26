@@ -1,17 +1,11 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.core.exceptions import ObjectDoesNotExist
 from django.views import View
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
+from django.contrib import messages
 from .forms import UserForm
 from mapApp import models, forms
-from django.shortcuts import redirect
-from django.contrib import messages
-
-
-def first_value(dictionary):
-    first_key_value = next(iter(dictionary.values()))[0]
-    return first_key_value
+from django.shortcuts import redirect, get_object_or_404, render
 
 
 # Create your views here.
@@ -39,6 +33,11 @@ class LoginView(View):
             return render(request, "mapApp/login.html", {'form': form})
 
 
+def logout_page(request):
+    logout(request)
+    return redirect('login_page')
+
+
 class RegisterView(View):
     def get(self, request):
         form = UserForm()
@@ -50,7 +49,7 @@ class RegisterView(View):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account ' + user + ' has created successfully!')
-            return redirect("login_page")
+        return redirect("login_page")
 
 
 def reset_page(request):
@@ -59,3 +58,11 @@ def reset_page(request):
 
 def map_page(request):
     return render(request, "mapApp/map.html")
+
+
+@login_required
+def user_page(request, username):
+    user = get_object_or_404(User, username=username)
+    email = user.email
+    context = {'username': username, 'email ': email}
+    return render(request, "mapApp/user.html", context)
