@@ -24,3 +24,9 @@ The target is to build an app with functions of
 ## Communication
 - IM: [Slack](tomomap.slack.com)
 - Email: [admin@tomomap.cc](mailto:admin@tomomap.cc)
+
+---
+
+Migrate to Public Account
+
+https://github.com/tomo-map/Tomo-Map
