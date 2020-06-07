@@ -25,5 +25,5 @@ urlpatterns = [
     path('register/', views.RegisterView.as_view(), name='register_page'),
     path('reset/', views.reset_page, name='reset_page'),
     path('map/', views.map_page, name='map_page'),
-    path('user/<str:username>', views.user_page, name='user_page'),
+    path('user/<str:username>', views.UserView.as_view(), name='user_page'),
 ]

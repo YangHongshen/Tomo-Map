@@ -3,6 +3,16 @@
 {% block content %}
 
 <p>Username is: {{ username }}</p>
-<p>User email is: {{ email }}</p>
+
+{% if request.user.username == username %}
+<p>User email is: {{ request.user.email }}</p>
+{% endif %}
+
+{% if request.user.username != username %}
+<form method="post">
+  {% csrf_token %}
+  <input type="submit" value="Send Friend Request">
+</form>
+{% endif %}
 
 {% endblock %}

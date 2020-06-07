@@ -34,3 +34,8 @@ class UserForm(UserCreationForm):
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Type a username'}),
             'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'example@email.com'}),
         }
+
+
+class FriendRequestForm(forms.Form):
+    friend_request_sender = forms.CharField()
+    friend_request_receiver = forms.CharField()

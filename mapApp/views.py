@@ -3,9 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .forms import UserForm
+from .forms import UserForm, FriendRequestForm
 from mapApp import models, forms
 from django.shortcuts import redirect, get_object_or_404, render
+from django.utils.decorators import method_decorator
+from .models import FriendList
 
 
 # Create your views here.
@@ -60,9 +62,17 @@ def map_page(request):
     return render(request, "mapApp/map.html")
 
 
-@login_required
-def user_page(request, username):
-    user = get_object_or_404(User, username=username)
-    email = user.email
-    context = {'username': username, 'email ': email}
-    return render(request, "mapApp/user.html", context)
+@method_decorator(login_required, name='dispatch')
+class UserView(View):
+
+    def get(self, request, username):
+        user = get_object_or_404(User, username=username)
+        email = user.email
+        context = {'username': username, 'email ': email}
+        return render(request, "mapApp/user.html", context)
+
+    def post(self, request, username):
+        FriendList.objects.create(
+            username=request.user.get_username(),
+            friend_request_sent=username)
+        return redirect("index_page")

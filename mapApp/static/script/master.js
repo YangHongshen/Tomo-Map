@@ -9,3 +9,8 @@ function confirmPassword(button_id) {
         document.getElementById(button_id).click();
     }
 }
+
+function searchUser() {
+    var username = document.getElementById("base_layout_user_search");
+    window.location.href("http://www.mozilla.org");
+}
