@@ -3,11 +3,10 @@
 
 <head>
     {% load static %}
-    <script src="{% static 'script/master.js' %}"></script> 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://kit.fontawesome.com/e2c5c6377d.js" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -15,6 +14,9 @@
     <link rel="shortcut icon" href="{% static 'images/Favicon/logo_size_invert.jpg' %}" />
 
     <title>{% block title %}Tomo Map{% endblock %}</title>
+    <script src="{% static 'script/master.js' %}"></script>
+    <script src="https://kit.fontawesome.com/e2c5c6377d.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -53,8 +55,8 @@
                 </div>
             </span>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" id="base_layout_user_search" type="search" placeholder="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" onclick=searchUser() type="button">Search</button>
+                <input id="inputName" class="form-control mr-sm-2" id="base_layout_user_search" type="search" placeholder="Search">
+                <button id="searchBtn" class="btn btn-outline-success my-2 my-sm-0" onclick=searchUser() type="button">Search</button>
             </form>
         </div>
     </nav>
@@ -64,6 +66,14 @@
     {% endblock %}
 
     <!-- Optional JavaScript -->
+    <script>
+    document.getElementById('searchBtn').onclick = searchFunction;
+    function searchFunction() {
+        var inputName = document.getElementById('inputName').value;
+        window.location.assign("https://www.apple.com");
+        window.event.returnValue = false;
+        }
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
