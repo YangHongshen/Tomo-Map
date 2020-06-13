@@ -8,6 +8,13 @@
     </div>
     <form method="post" id="register-form">
         {% csrf_token %}
+        {% for message in messages %}
+        <div class="text-center alert alert-success col-md-8 p-0 my-2 mx-auto" role="alert">
+            <p id="messages" class="font-weight-bold col-md-8 p-0 my-0 mx-auto">
+                {{ message }}
+            </p>
+        </div>
+        {% endfor %}
         {% for field in form.visible_fields %}
         <div class="form-group text-center col-md-8 mx-auto my-0 p-0 font-weight-bold">
             {{ field.label_tag }}

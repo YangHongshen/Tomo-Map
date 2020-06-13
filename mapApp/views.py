@@ -51,7 +51,10 @@ class RegisterView(View):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Account ' + user + ' has created successfully!')
-        return redirect("login_page")
+            return redirect("login_page")
+        else:
+            messages.error(request, "Sorry Form is invalid.")
+            return redirect("register_page")
 
 
 def reset_page(request):
