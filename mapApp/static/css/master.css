@@ -12,6 +12,6 @@ a {
     color:inherit;
 }
 
-.fa-user {
+.fa-user, .fa-bell {
     color: white;
 }

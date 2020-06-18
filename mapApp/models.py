@@ -17,3 +17,4 @@ class NotificationList(models.Model):
     notification = models.TextField(max_length=150)
     notification_sent = models.ForeignKey(User, on_delete=models.CASCADE, related_name="+")
     notification_received = models.ForeignKey(User, on_delete=models.CASCADE)
+    notification_read = models.BooleanField(default=False)

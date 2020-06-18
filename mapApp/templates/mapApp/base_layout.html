@@ -39,11 +39,24 @@
             </li>
         </ul>
         <span class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbar__dropdown__user" role="button"
-                   data-toggle="dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                    {% if user.is_authenticated %}
                     <i class="fas fa-bell fa-lg"></i>
+                    {% else %}
                     <i class="far fa-bell fa-lg"></i>
+                    {% endif %}
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><b> Visitor </b></a>
+                </div>
+        </span>
+        <span class="nav-item dropdown">
+                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                    {% if user.is_authenticated %}
                     <i class="fas fa-user fa-lg"></i>
+                    {% else %}
+                    <i class="far fa-user fa-lg"></i>
+                    {% endif %}
                 </a>
                 <div class="dropdown-menu">
                     {% if user.is_authenticated %}
@@ -57,7 +70,7 @@
                     <a class="dropdown-item" href="{% url 'register_page' %}"><b>Register</b></a>
                     {% endif %}
                 </div>
-            </span>
+        </span>
         <form class="form-inline my-2 my-lg-0">
             <input id="inputName" class="form-control mr-sm-2" id="base_layout_user_search" type="search"
                    placeholder="Search">
