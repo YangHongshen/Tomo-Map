@@ -1,4 +1,3 @@
 function searchUser() {
-    var userName = document.getElementById('inputName').value;
-    location.href = "/user/" + userName;
-    }
+    window.location.replace("/user/" + document.getElementById('inputName').value);
+}
