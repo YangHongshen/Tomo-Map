@@ -11,7 +11,8 @@ The target is to build an app with functions of
 
 ## Tech Stacks (Proactively Updating)
 - Prototyping: [InVision](https://www.invisionapp.com/)
-- Front-end: [Bootstrap](https://getbootstrap.com/)
+- Front-end (css): [Bootstrap](https://getbootstrap.com/)
+- Front-end (javascript): [Reactjs](https://reactjs.org/)
 - Back-end: [Django](https://www.djangoproject.com/)
 - Reverse proxy: [Nginx](https://www.nginx.com/)
 - Database: [Sqlite](https://www.sqlite.org/index.html)
